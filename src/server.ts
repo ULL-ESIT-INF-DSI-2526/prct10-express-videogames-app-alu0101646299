@@ -4,6 +4,8 @@ import { Videogame } from './videogame.js';
 
 const app = express();
 
+app.use(express.json());
+
 app.get('/videogames', (req, res) => {
   const user = req.query.user as string;
   const id = req.query.id ? Number(req.query.id) : undefined;
@@ -70,6 +72,6 @@ app.delete('/videogames', (req, res) => {
   }
 });
 
-app.listen(3000, '0.0.0.0', () => {
+app.listen(3000, () => {
   console.log('Server is up on port 3000');
 });
