@@ -2,7 +2,7 @@ import express from 'express';
 import { GameCollection } from './gameCollection.js';
 import { Videogame } from './videogame.js';
 
-const app = express();
+export const app = express();
 
 app.use(express.json());
 
@@ -72,6 +72,8 @@ app.delete('/videogames', (req, res) => {
   }
 });
 
-app.listen(3000, () => {
-  console.log('Server is up on port 3000');
-});
+if (process.env.NODE_ENV !== 'test') {
+  app.listen(3000, () => {
+    console.log('Server is up on port 3000');
+  });
+}
